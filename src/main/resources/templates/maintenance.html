@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Under Maintenance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #141E30, #243B55);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        h2 {
+            color: #FFD700;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #FFD700;
+            color: #141E30;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #FFC700;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .button {
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+        }
+
+        /* Animated Background */
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.2) 100%);
+            animation: animateBackground 20s infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes animateBackground {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-background"></div>
+    <div class="container">
+        <h2>🚧 Under Maintenance 🚧</h2>
+        <p>Our admin section is currently under maintenance. I am working hard to improve the experience. Please check back soon!</p>
+        <a href="/" class="button">Return to Home</a>
+    </div>
+
+    <script>
+      
+        document.addEventListener('DOMContentLoaded', function() {
+            const messageElement = document.querySelector('p');
+            const messageText = messageElement.textContent;
+            messageElement.textContent = '';
+            
+            let index = 0;
+            const typingSpeed = 50; // milliseconds
+            
+            function typeMessage() {
+                if (index < messageText.length) {
+                    messageElement.textContent += messageText.charAt(index);
+                    index++;
+                    setTimeout(typeMessage, typingSpeed);
+                }
+            }
+            
+            typeMessage();
+        });
+    </script>
+</body>
+</html>

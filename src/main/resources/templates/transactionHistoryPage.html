@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction History</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow-x: auto; /* Enables horizontal scrolling on small screens */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            word-break: break-word; /* Ensures text breaks on small screens */
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            th, td {
+                font-size: 0.9em; /* Smaller font size on smaller screens */
+            }
+        }
+
+        @media (max-width: 480px) {
+            th, td {
+                font-size: 0.8em; /* Even smaller font size on very small screens */
+            }
+            .container {
+                padding: 10px; /* Less padding on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Transaction History</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Amount</th>
+                    <th>Payment Method</th>
+                    <th>Card Number</th>
+                    <th>Expiry Date</th>
+                    <th>CVV</th>
+                    <th>Cardholder Name</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                <tr th:each="transaction : ${transactions}">
+                    <td th:text="${transaction.id}"></td>
+                    <td th:text="${transaction.amount}"></td>
+                    <td th:text="${transaction.paymentMethod}"></td>
+                    <td th:text="${transaction.cardNumber}"></td>
+                    <td th:text="${transaction.expiryDate}"></td>
+                    <td th:text="${transaction.cvv}"></td>
+                    <td th:text="${transaction.cardHolderName}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

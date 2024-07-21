@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Account Home Page</title>
+	<!-- Font Awesome CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+	<!-- Custom CSS -->
+	<style>
+		/* Basic Reset */
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		html,
+		body {
+			height: 100%;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f0f0f0;
+			display: flex;
+		}
+
+		/* Container Styles */
+		.container {
+			display: flex;
+			flex: 1;
+			background-color: #fff;
+			border-radius: 8px;
+			margin: 20px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			overflow: hidden;
+		}
+
+		/* Navigation Menu */
+		.nav-menu {
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100vh;
+			width: 260px;
+			background: linear-gradient(135deg, rgb(0, 0, 0), rgb(0, 0, 64), #0d47a1);
+			color: #fff;
+			padding-top: 20px;
+			transition: width 0.3s;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 15px;
+		}
+
+		.nav-menu h2 {
+			margin-left: 20px;
+			font-size: 1.5em;
+		}
+
+		.nav-menu ul {
+			list-style-type: none;
+			padding: 0;
+			margin-top: 20px;
+		}
+
+		.nav-menu li {
+			margin-bottom: 20px;
+		}
+
+		.nav-menu a {
+			display: flex;
+			align-items: center;
+			padding: 15px 20px;
+			color: #fff;
+			text-decoration: none;
+			font-size: 1.1em;
+			transition: background 0.3s, color 0.3s;
+		}
+
+		.nav-menu a:hover {
+			background-color: rgb(88, 155, 0);
+		}
+
+		.nav-menu a .icon {
+			margin-right: 10px;
+			font-size: 1.5em;
+		}
+
+		/* Main Content Area */
+		.main-content {
+			margin-left: 250px;
+			padding: 20px;
+			flex: 1;
+		}
+
+		.main-content .center-content {
+			background-color: rgba(255, 255, 255, 0.1);
+			/* Semi-transparent white background */
+			padding: 30px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			text-align: center;
+			max-width: 600px;
+			margin: auto;
+		}
+
+		.main-content .center-content h2 {
+			font-size: 2em;
+			margin-bottom: 20px;
+		}
+
+		.main-content .center-content p {
+			font-size: 1.2em;
+			line-height: 1.6;
+			margin-bottom: 30px;
+		}
+
+		/* Enhanced Center Content */
+		.enhanced-content {
+			background-color: #222;
+			/* Dark background */
+			padding: 30px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+			text-align: center;
+			max-width: 600px;
+			margin: auto;
+		}
+
+		.enhanced-content h2 {
+			font-size: 2.5em;
+			color: #fff;
+			margin-bottom: 20px;
+		}
+
+		.enhanced-content p {
+			font-size: 1.2em;
+			color: #ccc;
+			line-height: 1.6;
+			margin-bottom: 30px;
+		}
+
+		.enhanced-content .cta-button {
+			background-color: #0d47a1;
+			/* Blue button */
+			color: #fff;
+			padding: 12px 24px;
+			border: none;
+			border-radius: 5px;
+			font-size: 1.1em;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		.enhanced-content .cta-button:hover {
+			background-color: #1565c0;
+			/* Darker blue on hover */
+		}
+
+		.profile-info,
+		.account-settings {
+			background-color: #f9f9f9;
+			padding: 20px;
+			border-radius: 8px;
+			margin-bottom: 20px;
+			display: none;
+			/* Initially hide these sections */
+		}
+
+		.profile-info h2,
+		.account-settings h2 {
+			margin-bottom: 10px;
+		}
+
+		.profile-info p {
+			margin-bottom: 10px;
+		}
+
+		/* Right Sidebar */
+		.sidebar {
+			position: fixed;
+			top: 0;
+			right: 0;
+			height: 100vh;
+			width: 175px;
+			background: linear-gradient(135deg, rgb(0, 0, 0), rgb(0, 0, 64), #0d47a1);
+			color: #fff;
+			padding-top: 20px;
+			transition: width 0.3s;
+			border-top-left-radius: 15px;
+			border-bottom-left-radius: 15px;
+		}
+
+		.sidebar h2 {
+			margin-bottom: 20px;
+			font-size: 1.5em;
+		}
+
+		/* Responsive Design */
+		@media (max-width: 1024px) {
+			.nav-menu {
+				width: 220px;
+			}
+
+			.main-content {
+				margin-left: 220px;
+			}
+
+			.sidebar {
+				width: 150px;
+			}
+		}
+
+		@media (max-width: 768px) {
+			.nav-menu {
+				width: 200px;
+			}
+
+			.main-content {
+				margin-left: 200px;
+			}
+
+			.sidebar {
+				width: 130px;
+			}
+		}
+
+		@media (max-width: 480px) {
+			.nav-menu {
+				width: 150px;
+				border-radius: 0;
+			}
+
+			.main-content {
+				margin-left: 150px;
+				padding: 15px;
+			}
+
+			.nav-menu a {
+				font-size: 0.9em;
+			}
+
+			.nav-menu a .icon {
+				font-size: 1.2em;
+			}
+
+			.sidebar {
+				width: 100px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<!-- Navigation Menu -->
+		<div class="nav-menu">
+			<h2>Navigation</h2>
+			<ul>
+				<li><a href="javascript:void(0)" onclick="showCustomerData()"><span class="icon"><i
+								class="fas fa-user"></i></span> Account Information</a></li>
+				<li><a href="/account/deposit"><span class="icon"><i class="fas fa-money-bill-wave"></i></span> Deposit
+						Money</a></li>
+
+				<li><a href="/account/transactionHistory"><span class="icon"><i class="fas fa-history"></i></span>
+						Transaction History</a></li>
+
+				<li><a href="/account/logout"><span class="icon"><i class="fas fa-sign-out-alt"></i></span> Log Out</a>
+				</li>
+			</ul>
+		</div>
+		<!-- Main Content Area -->
+		<div class="main-content">
+			<div class="center-content">
+				<div class="enhanced-content">
+					<h2>Welcome to Your Account Dashboard</h2>
+					<p>Explore your financial insights and manage your accounts with ease. Take advantage of our secure
+						banking features tailored for your convenience.</p>
+					<button onclick="showCustomerData()" class="cta-button">Account Information</button>
+				</div>
+			</div>
+
+			<div class="profile-info">
+				<h2>Account Information</h2> <!-- Added heading here -->
+				<div id="accountInformationContainer"></div>
+			</div>
+			<div class="account-settings">
+				<h2>Account Settings</h2>
+				<div class="password-management">
+					<h3>Password Management</h3>
+
+				</div>
+				<div class="notification-preferences">
+					<h3>Notification Preferences</h3>
+
+				</div>
+				<div class="connected-accounts">
+					<h3>Connected Accounts</h3>
+
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<script>
+
+		function showCustomerData() {
+
+			document.querySelector('.enhanced-content').style.display = 'none';
+			document.querySelector('.account-settings').style.display = 'none';
+
+
+			document.querySelector('.profile-info').style.display = 'block';
+
+
+			fetchAccountInformation();
+		}
+
+
+		function fetchAccountInformation() {
+			fetch('/account/information')
+				.then(response => response.json())
+				.then(data => {
+					console.log('Received data:', data); // Check the received data in console
+					document.getElementById('accountInformationContainer').innerHTML = `
+                        <p><strong>Name:</strong> ${data.fullName}</p>
+                        <p><strong>Email Address:</strong> ${data.address}</p>
+                        <p><strong>Phone Number:</strong> ${data.phoneNumber}</p>
+                        <p><strong>Account Type:</strong> ${data.accountType}</p>
+                        <p><strong>Current Balance:</strong> ${data.initialDeposit}</p>
+                        <p><strong>Nominee Details:</strong> ${data.nomineeDetails}</p>
+                        <p><strong>Preferred Branch:</strong> ${data.preferredBranch}</p>
+                        <!-- Add other fields as needed -->
+                    `;
+				})
+				.catch(error => {
+					console.error('Error fetching data:', error);
+
+				});
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit Success</title>
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .success-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .success-container h2 {
+            color: #4caf50;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            animation: fadeIn 1s ease-out;
+        }
+        .success-container p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: #333;
+            animation: slideIn 1s ease-out;
+        }
+        .success-container a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0d47a1;
+            color: #fff;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .success-container a:hover {
+            background-color: #1565c0;
+            transform: scale(1.05);
+        }
+        .success-icon {
+            font-size: 4em;
+            color: #4caf50;
+            margin-bottom: 20px;
+            animation: bounce 1s infinite;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .success-container h2 {
+                font-size: 1.5em;
+            }
+            .success-container p {
+                font-size: 1em;
+            }
+            .success-container a {
+                padding: 8px 16px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .success-container h2 {
+                font-size: 1.2em;
+            }
+            .success-container p {
+                font-size: 0.9em;
+            }
+            .success-container a {
+                padding: 6px 12px;
+                font-size: 0.9em;
+            }
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="success-container">
+        <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h2>Deposit Successful</h2>
+        <p>Your deposit has been successfully processed.</p>
+        <p>New Balance: ₹<span th:text="${newBalance}"></span></p>
+        <a href="/account/home">Go to Account Home</a>
+    </div>
+</body>
+</html>
