@@ -2,7 +2,5 @@ target/
 .mvn/
 .settings/
 logs/
-.classpath
 .factorypath
-.project
 .gitignore
