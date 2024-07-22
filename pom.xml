@@ -13,7 +13,9 @@
 	<artifactId>OnlineBankingApplication</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>OnlineBankingApplication</name>
-	<description>Demo project for Spring Boot</description>
+	<description>A Java Spring Boot with MySQL Database</description>
+	<packaging>jar</packaging>
+	
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -97,11 +99,7 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>com.staxrt.tutorial</groupId>
-			<artifactId>spring-boot-rest-api-tutorial</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
+		
 		
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-webflux -->
 <dependency>

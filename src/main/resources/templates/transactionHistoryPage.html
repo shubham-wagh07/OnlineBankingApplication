@@ -67,7 +67,8 @@
         <h2>Transaction History</h2>
         <table>
             <thead>
-                <tr>               
+                <tr>    
+					<th>ID</th>           
                     <th>Amount</th>
                     <th>Payment Method</th>
                     <th>Card Number</th>
@@ -79,6 +80,7 @@
             <tbody>
                
                 <tr th:each="transaction : ${transactions}">
+					<td th:text="${transaction.Id}"></td>
                     <td th:text="${transaction.amount}"></td>
                     <td th:text="${transaction.paymentMethod}"></td>
                     <td th:text="${transaction.cardNumber}"></td>
