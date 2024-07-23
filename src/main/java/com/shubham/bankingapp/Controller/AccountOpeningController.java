@@ -39,6 +39,7 @@ public class AccountOpeningController {
             Customer customer = customerRepository.findByEmail(accountOpening.getEmail());
             if (customer == null) {
                 // If customer does not exist, create a new one
+            	
                 customer = new Customer();
                 customer.setEmail(accountOpening.getEmail());
                 // Set other customer details as needed

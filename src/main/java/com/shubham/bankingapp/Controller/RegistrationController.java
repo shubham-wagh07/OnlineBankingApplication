@@ -44,7 +44,7 @@ public class RegistrationController {
         // Encrypt password and save customer
         customer.setPassword(new BCryptPasswordEncoder().encode(customer.getPassword()));
         customerRepository.save(customer);
-        return "redirect:/success";
+        return "success";
     }
 
     @GetMapping("/success")

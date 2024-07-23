@@ -1,10 +1,74 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Error Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            color: #e74c3c;
+        }
+        p {
+            font-size: 1.2em;
+            color: #555;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
-    <h1>Something went wrong!</h1>
-    <p th:text="${errorMessage}">Error message will be displayed here.</p>
+    <div class="container">
+        <h1>Oops! Something went wrong</h1>
+        <p id="errorMessage">We encountered a problem. Please try logging in again.</p>
+        <a href="/login" class="button">Login Again</a>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Example of customizing the error message based on conditions
+            const errorMessageElement = document.getElementById('errorMessage');
+            
+            // You can add conditions or fetch error messages from an API
+            // Here we just set a default message, but you can modify this part as needed
+            const errorMessage = "There was an issue processing your request. Please try logging in again.";
+            
+            // Set the error message text
+            errorMessageElement.textContent = errorMessage;
+            
+            // Add a fade-in effect to the message
+            errorMessageElement.style.opacity = 0;
+            setTimeout(() => {
+                errorMessageElement.style.transition = 'opacity 2s ease-in-out';
+                errorMessageElement.style.opacity = 1;
+            }, 500);
+        });
+    </script>
 </body>
 </html>
